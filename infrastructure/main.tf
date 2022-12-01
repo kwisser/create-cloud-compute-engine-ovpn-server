@@ -1,8 +1,8 @@
 resource "google_compute_instance" "default" {
-  project = var.project_id
-  name         = "test"
-  machine_type = "f1-micro"
-  zone         = "us-central1-a"
+  project      = var.project_id
+  name         = var.name
+  machine_type = var.machine_type
+  zone         = "europe-west1-b"
 
   tags = ["foo", "bar"]
 
@@ -18,16 +18,24 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     network = "default"
-
+  
     access_config {
       // Ephemeral public IP
     }
   }
 
-  metadata = {
-    foo = "bar"
+  metadata_startup_script = "sudo apt-get update && sudo apt-get upgrade -y && curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh chmod +x openvpn-install.sh && sudo AUTO_INSTALL=y ./openvpn-install.sh"
+}
+
+resource "google_compute_firewall" "default" {
+  project = var.project_id
+  name    = "ovpn-firewall"
+  network = "default"
+
+  allow {
+    protocol = "udp"
+    ports    = ["1194"]
   }
-
-  metadata_startup_script = "echo hi > /test.txt"
-
+  
+  source_ranges = ["0.0.0.0/0"]
 }

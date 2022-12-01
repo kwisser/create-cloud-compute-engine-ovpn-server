@@ -4,6 +4,11 @@ variable "project_id" {
     default = "host-openvpn-server"
 }
 
+variable "name" {
+    description = "Name of the compute instance"
+    type = string
+}
+
 variable "machine_type" {
     description = "Machine Type of the VM Instance"
     type = string
