@@ -6,11 +6,17 @@ variable "project_id" {
 
 variable "name" {
     description = "Name of the compute instance"
-    type = string
+    type        = string
 }
 
 variable "machine_type" {
     description = "Machine Type of the VM Instance"
-    type = string
-    default = "f1-micro"
+    type        = string
+    default     = "f1-micro"
+}
+
+variable "zone" {
+    description = "Zone of the VM Instance"
+    type        = string
+    default     = "europe-west1-b"
 }
