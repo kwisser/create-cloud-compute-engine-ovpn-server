@@ -2,7 +2,7 @@
 
 ## How to Setup
 
-`cd infrastructure`
-`terraform init`
-`terraform plan`
+`cd infrastructure` \
+`terraform init` \
+`terraform plan` \
 `terraform apply`
