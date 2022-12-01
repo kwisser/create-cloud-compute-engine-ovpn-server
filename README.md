@@ -1,4 +1,4 @@
-# Create a compute engine instance with openvpn server installed
+# Create VPS Server with OpenVPN Server in GCP
 
 ## How to Setup
 
