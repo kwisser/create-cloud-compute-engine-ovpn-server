@@ -1,7 +1,7 @@
 resource "google_compute_instance" "default" {
-  project = "host-openvpn-server"
+  project = var.project_id
   name         = "test"
-  machine_type = "e2-medium"
+  machine_type = "f1-micro"
   zone         = "us-central1-a"
 
   tags = ["foo", "bar"]
