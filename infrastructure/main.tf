@@ -22,7 +22,7 @@ resource "google_compute_instance" "default" {
       // Ephemeral public IP
     }
   }
-  metadata_startup_script = "sudo apt-get update && sudo apt-get upgrade -y && curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh chmod +x openvpn-install.sh && sudo AUTO_INSTALL=y ./openvpn-install.sh"
+  metadata_startup_script = "sudo apt-get update && sudo apt-get upgrade -y && curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh && chmod +x openvpn-install.sh && sudo AUTO_INSTALL=y ./openvpn-install.sh"
 }
 
 resource "google_compute_firewall" "default" {
