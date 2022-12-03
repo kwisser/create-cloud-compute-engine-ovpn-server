@@ -4,14 +4,9 @@ resource "google_compute_instance" "default" {
   machine_type = var.machine_type
   zone         = var.zone
 
-  tags = ["foo", "bar"]
-
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
-      labels = {
-        my_label = "value"
-      }
     }
   }
 
@@ -22,7 +17,14 @@ resource "google_compute_instance" "default" {
       // Ephemeral public IP
     }
   }
-  metadata_startup_script = "sudo apt-get update && sudo apt-get upgrade -y && curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh && chmod +x openvpn-install.sh && sudo AUTO_INSTALL=y ./openvpn-install.sh"
+    metadata = {
+    startup-script = <<-EOF
+    sudo apt-get update && sudo apt-get upgrade -y &&
+    cd /home/$USER/ &&
+    curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh && 
+    chmod +x openvpn-install.sh && sudo AUTO_INSTALL=y ./openvpn-install.sh
+  EOF
+  }
 }
 
 resource "google_compute_firewall" "default" {
