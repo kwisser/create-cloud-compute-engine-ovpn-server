@@ -240,16 +240,25 @@ function installQuestions() {
 	if [[ $APPROVE_IP =~ n ]]; then
 		read -rp "IP address: " -e -i "$IP" IP
 	fi
-	# If $IP is a private IP address, the server must be behind NAT
+
+ 	# If $IP is a private IP address, the server must be behind NAT
 	if echo "$IP" | grep -qE '^(10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|192\.168)'; then
 		echo ""
 		echo "It seems this server is behind NAT. What is its public IPv4 address or hostname?"
 		echo "We need it for the clients to connect to the server."
 
-		PUBLICIP=$(curl -s https://api.ipify.org)
+	PUBLICIP=$(curl -s https://api.ipify.org)
+
+	# Überprüfen, ob PUBLICIP gesetzt ist
+	if [[ -z "$PUBLICIP" ]]; then
+		# Falls PUBLICIP leer ist, weiterhin nach Eingabe fragen
 		until [[ $ENDPOINT != "" ]]; do
-			read -rp "Public IPv4 address or hostname: " -e -i "$PUBLICIP" ENDPOINT
+			read -rp "Public IPv4 address or hostname: " -e ENDPOINT
 		done
+	else
+		# Falls PUBLICIP nicht leer ist, ENDPOINT auf PUBLICIP setzen und fortfahren
+		ENDPOINT=$PUBLICIP
+	fi
 	fi
 
 	echo ""
