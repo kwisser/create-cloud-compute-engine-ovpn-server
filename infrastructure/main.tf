@@ -19,11 +19,11 @@ resource "google_compute_instance" "default" {
   }
     metadata = {
     startup-script = <<-EOF
-    sudo apt-get update && sudo apt-get upgrade -y &&
-    cd /home/ &&
+    sudo apt-get update && mkdir -p /home/${var.vm_username} &&
+    cd /home/${var.vm_username} &&
     curl -O https://raw.githubusercontent.com/kwisser/create-cloud-compute-engine-ovpn-server/main/openvpn-install.sh && 
     chmod +x openvpn-install.sh && sudo AUTO_INSTALL=y ./openvpn-install.sh &&
-    mv /root/client.ovpn /home/wisserklemens
+    mv /root/client.ovpn /home/${var.vm_username}
   EOF
   }
 }
