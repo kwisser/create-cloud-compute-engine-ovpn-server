@@ -15,6 +15,12 @@ Clone the repository containing the Terraform scripts.
 ```bash
 git clone https://github.com/kwisser/create-cloud-compute-engine-ovpn-server
 cd create-cloud-compute-engine-ovpn-server/infrastructure
+```
+
+## Step 2: Choose a Zone for Your VPN Location
+
+Select a suitable zone for deploying the VM instance. The choice of zone can affect the latency and speed of your VPN. You can find a list of available regions and zones on GCP [here](https://cloud.google.com/compute/docs/regions-zones?hl=de#available).
+
 
 ## How to Setup
 
