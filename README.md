@@ -31,6 +31,15 @@ terraform init
 ```
 
 Now, plan and apply the Terraform configuration. This will show the resources that will be created and apply the changes, respectively.
+You will have to enter the following variables
+
+```
+project_id   = "your-gcp-project-id"
+name         = "name-of-your-vm-instance"
+machine_type = "f1-micro"  # or any other machine type
+zone         = "us-central1-a"  # or any other zone
+vm_username  = "your-username"
+```
 
 ```bash
 terraform plan
