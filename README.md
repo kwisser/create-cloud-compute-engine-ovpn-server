@@ -1,6 +1,20 @@
-# Create VPS Server with OpenVPN Server in GCP
+## Setting up a VPS Server with OpenVPN on GCP using Terraform
 
-Terraform script which creates a compute engine in gcp which hosts a openvpn server.
+This guide walks through the process of setting up a Virtual Private Server (VPS) with OpenVPN on Google Cloud Platform (GCP) using Terraform. The provided Terraform script will automate the provisioning of a Google Compute Engine instance, and the installation of OpenVPN server on it. Upon successful execution, a `client.ovpn` configuration file will be generated in the user directory, which can be used to connect to the VPN server from a client machine.
+
+### Pre-requisites
+
+- Ensure you have [Terraform installed](https://www.terraform.io/downloads.html) on your machine.
+- A Google Cloud Platform (GCP) account with necessary permissions to create resources.
+- Git (Optional, for cloning the repository)
+
+### Step 1: Clone the Repository
+
+Clone the repository containing the Terraform scripts.
+
+```bash
+git clone https://github.com/kwisser/create-cloud-compute-engine-ovpn-server
+cd create-cloud-compute-engine-ovpn-server/infrastructure
 
 ## How to Setup
 
