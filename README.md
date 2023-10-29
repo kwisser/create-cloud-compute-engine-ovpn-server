@@ -42,7 +42,7 @@ Upon successful execution, a client.ovpn file will be generated in the user dire
 ### Credits
 The OpenVPN installation script is sourced from [angristan/openvpn-install](https://github.com/angristan/openvpn-install).
 
-Support & Contributions
+### Support & Contributions
 For issues, or contributions, feel free to open a pull request or create an issue in the repository.
 
 This setup allows you to have a personal VPN server hosted on GCP with minimal setup. Enjoy secure and private browsing!
