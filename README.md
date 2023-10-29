@@ -21,16 +21,28 @@ cd create-cloud-compute-engine-ovpn-server/infrastructure
 
 Select a suitable zone for deploying the VM instance. The choice of zone can affect the latency and speed of your VPN. You can find a list of available regions and zones on GCP [here](https://cloud.google.com/compute/docs/regions-zones?hl=de#available).
 
+## Step 3: Execute Terraform Scripts
 
-## How to Setup
+Navigate to the infrastructure directory and initialize Terraform. This will download the necessary provider plugins.
 
-### Choose the zone for your vpn location
+```bash
+cd infrastructure
+terraform init
+```
 
-<https://cloud.google.com/compute/docs/regions-zones?hl=de#available>
+Now, plan and apply the Terraform configuration. This will show the resources that will be created and apply the changes, respectively.
 
-### Execute Terraform
+```bash
+terraform plan
+terraform apply
+```
 
-`cd infrastructure` \
-`terraform init` \
-`terraform plan` \
-`terraform apply`
+Upon successful execution, a client.ovpn file will be generated in the user directory. This file can be used to connect to the VPN server from a client machine.
+
+### Credits
+The OpenVPN installation script is sourced from [angristan/openvpn-install](https://github.com/angristan/openvpn-install).
+
+Support & Contributions
+For issues, or contributions, feel free to open a pull request or create an issue in the repository.
+
+This setup allows you to have a personal VPN server hosted on GCP with minimal setup. Enjoy secure and private browsing!
