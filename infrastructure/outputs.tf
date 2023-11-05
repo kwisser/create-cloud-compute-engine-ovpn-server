@@ -1,11 +1,15 @@
 output "internal_ip" {
-    value = google_compute_instance.default.network_interface.0.network_ip
+    value = module.compute_network.internal_ip
 }
 
 output "external_ip" {
-    value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
+    value = module.compute_network.external_ip
 }
 
 output "client_ovpn_url" {
-  value = "https://storage.cloud.google.com/${google_storage_bucket.openvpn_bucket.name}/client.ovpn"
+  value = module.storage.client_ovpn_url
+}
+
+output "storage_bucket_name" {
+  value = module.storage.name
 }
